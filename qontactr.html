@@ -2,16 +2,23 @@
 <head>
   <script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script>
-    const JSONstring = window.location.href.split('?data=')[1];
-    let decoded = decodeURIComponent(JSONstring);
-
-    const lastCommaIndex = decoded.lastIndexOf(',');
-    decoded = decoded.substring(0, lastCommaIndex) + decoded.substring(lastCommaIndex + 1);
-    const data = JSON.parse(decoded);
-
-    // Display info
-    $('#first').text(data.first);
-    
+    $(() => {
+      const JSONstring = window.location.href.split('?data=')[1];
+      let decoded = decodeURIComponent(JSONstring);
+      
+      const lastCommaIndex = decoded.lastIndexOf(',');
+      decoded = decoded.substring(0, lastCommaIndex) + decoded.substring(lastCommaIndex + 1);
+      
+      try {
+        const data = JSON.parse(decoded);
+        console.log(data);
+      } catch(err) {
+        alert('Failed to parse url!');
+        return;
+      }
+      // Display info
+      $('#first').text(data.first);
+    });
   </script>
 </head>
 <body>
