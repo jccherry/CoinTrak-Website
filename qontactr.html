@@ -9,8 +9,9 @@
       const lastCommaIndex = decoded.lastIndexOf(',');
       decoded = decoded.substring(0, lastCommaIndex) + decoded.substring(lastCommaIndex + 1);
       
+      let data = {};
       try {
-        const data = JSON.parse(decoded);
+        data = JSON.parse(decoded);
         console.log(data);
       } catch(err) {
         alert('Failed to parse url!');
