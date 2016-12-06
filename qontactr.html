@@ -18,7 +18,9 @@
         return;
       }
       // Display info
-      $('#first').text(data.first);
+      for(let propName in data) {
+        $(`#${propName}`).text(data[propName]); // Finds proper element by property name and sets its proper text
+      }
     });
   </script>
 </head>
