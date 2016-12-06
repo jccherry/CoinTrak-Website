@@ -4,7 +4,7 @@
   <script>
     const urlParts = window.location.href.split('/'); // ['https:', 'website.com', '{"data": 12}']
     const encoded = urlParts[urlParts.length - 1]; // Last element should be encoded JSO
-    const data = JSON.parse(JSONstring);
+    const data = JSON.parse(window.location.href.split('?data=')[1]);
     
     $("#first").text(json.first);
     
