@@ -1,33 +1,50 @@
 <html>
-<head>
-  <script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script>
-    $(() => {
-      const JSONstring = window.location.href.split('?data=')[1];
-      let decoded = decodeURIComponent(JSONstring);
-      
-      const lastCommaIndex = decoded.lastIndexOf(',');
-      decoded = decoded.substring(0, lastCommaIndex) + decoded.substring(lastCommaIndex + 1);
-      
-      let data = {};
-      try {
-        data = JSON.parse(decoded);
-        console.log(data);
-      } catch(err) {
-        alert('Failed to parse url!');
-        return;
-      }
-      // Display info
-      for(let propName in data) {
-        $(`#${propName}`).text(data[propName]); // Finds proper element by property name and sets its proper text
-      }
-    });
-  </script>
-</head>
-<body>
-  <h3>Qontactr</h3>
-     <p>Coming Soon...</p>
-     
-     <p>First: <span id = "first"></span></p>
+  <head>
+    <script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+      $(() => {
+        const container = $('.container');
+
+        const JSONstring = window.location.href.split('?data=')[1];
+        let decoded = decodeURIComponent(JSONstring);
+
+        const lastCommaIndex = decoded.lastIndexOf(',');
+        decoded = decoded.substring(0, lastCommaIndex) + decoded.substring(lastCommaIndex + 1);
+
+        let data = {};
+        try {
+          data = JSON.parse(decoded);
+          console.log(data);
+        } catch(err) {
+          alert('Failed to parse url!');
+          $('.status').text('Failed to load data!');
+          return;
+        }
+
+        $('.status').hide();
+
+        // Display info
+        for (let propName in data) {
+           // Finds proper element by property name and sets its proper text
+          const item = $('<div>', {
+            class: 'property',
+            'data-property-name': propName
+          });
+          $('b', { class: 'property-name', text: propName }).appendTo(item);
+          $('span', { class: 'property-value', text: data[propName] }).appendTo(item);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h3>Qontactr</h3>
+    <p>Coming Soon...</p>
+
+    <div class='contact-data'>
+      <span class='status'>Loading data...</span>
+      <div class='container'>
+        
+      </div>
+    </div>
   </body>
 </html>
