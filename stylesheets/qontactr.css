@@ -1,0 +1,9 @@
+body {
+  padding: 20px;
+  font-family: 'Calibri';
+}
+
+/* Utility classes */
+.right { float: right; }
+.light { float: left; }
+.center { text-align: center; }
