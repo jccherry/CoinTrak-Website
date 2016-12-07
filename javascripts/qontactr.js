@@ -27,4 +27,6 @@ $(() => {
     item.append(span);
     container.append(item);
   }
+  
+  $('title').text(`${data.first} | Qontactr`);
 });
