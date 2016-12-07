@@ -30,8 +30,8 @@
             class: 'property',
             'data-property-name': propName
           });
-          const b = $('b', { class: 'property-name', text: propName });
-          const span = $('span', { class: 'property-value', text: data[propName] });
+          const b = $('<b>', { class: 'property-name', text: propName });
+          const span = $('<span>', { class: 'property-value', text: data[propName] });
           item.append(b);
           item.append(span);
           container.append(item);
