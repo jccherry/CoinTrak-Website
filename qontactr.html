@@ -32,6 +32,8 @@
           });
           $('b', { class: 'property-name', text: propName }).appendTo(item);
           $('span', { class: 'property-value', text: data[propName] }).appendTo(item);
+          
+          container.append(item);
         }
       });
     </script>
