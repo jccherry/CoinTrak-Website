@@ -30,9 +30,10 @@
             class: 'property',
             'data-property-name': propName
           });
-          $('b', { class: 'property-name', text: propName }).appendTo(item);
-          $('span', { class: 'property-value', text: data[propName] }).appendTo(item);
-          
+          const b = $('b', { class: 'property-name', text: propName });
+          const span = $('span', { class: 'property-value', text: data[propName] });
+          item.append(b);
+          item.append(span);
           container.append(item);
         }
       });
